@@ -1,0 +1,952 @@
+@charset "UTF-8";
+/* BUG:                                                                                                           
+ * Unfortunatly, there's a bug in Chrome/Chromium/Safari that                                                     
+ * background-attachement: fixed never works, the worse is that                                                   
+ * it can effect the background-size: cover config. This would                                                    
+ * make the whole page look suck.                                                                                 
+ * Related link:                                                                                                  
+ * https://productforums.google.com/forum/#!topic/chrome/l6BF3W0rymo                                              
+ * https://code.google.com/p/chromium/issues/detail?id=366012                                                     
+ * Solution:                                                                                                      
+ * 1. Use js magic for it;                                                                                        
+ * 2. Drop this feature in CSS, and waiting for the update of browser.                                            
+ * I choose the second way, you can blame me here:                                                                
+ * --> nalagirut at gmail dot com.                                                                                
+ * Or fixed it for me, it's great appreciated!                                                                    
+ * Or just shut up and eat you cornflakes.                                                                        
+ *                                                                                                                
+ * -- From Nala Ginrut                                                                                            
+ * Jul 12, 2014.                                                                                                  
+ */
+
+@font-face {
+    font-family: "Kelvetica Nobis";
+    src: url("./kelvetica-nobis.otf");
+}
+
+@font-face {
+    font-family: "Cabin";
+    src: url("./Cabin-Regular.otf");
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;  
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+    font-family: "Kelvetica Nobis","Hiragino Sans GB","WenQuanYi Micro Hei" ,"Microsoft YaHei", Georgia, serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+h1, h2, p, span, a {
+    font-family: "Kelvetica Nobis","Hiragino Sans GB","WenQuanYi Micro Hei" ,"Microsoft YaHei", Georgia, serif;
+    color: #2f2e2f;
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+    word-wrap:break-word;
+}
+
+#cn {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+a:link {
+    color: #34cfbe;
+}
+
+a:visited {
+    color: #00675c;
+}
+
+#header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #666;
+    height: 70px;
+    width: 100%;
+}
+
+nav {
+    font-family: "Kelvetica Nobis","Hiragino Sans GB","WenQuanYi Micro Hei" ,"Microsoft YaHei", Georgia, serif;
+    font-weight: bold;
+    text-align: center;
+    position: fixed;
+    background: white;
+    -moz-opacity: 0.4;
+    -khtml-opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+    opacity: 0.4;
+    z-index: 99;
+}
+
+nav:hover {
+    opacity: 0.6;
+}
+
+nav ul {
+    margin-left: -35px;
+    margin-top: 40px;
+    vertical-align: middle;
+}
+nav li {
+    list-style: none;
+    text-align: center;
+    line-height: 2em;
+}
+
+nav ul li a:link {
+    text-decoration: none;
+    color: #34cfbe;
+}
+
+nav ul li a:visited {
+    text-decoration: none;
+    color: #34cfbe;
+}
+
+.desctiption-content {
+    width: 100%;
+    background: white;
+    margin: 0 auto 0 auto;
+    //z-index: 99;
+    position: relative;
+    background: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 900;
+    width: 300px;
+    letter-spacing: 0.040em;
+    border: 8px solid #2f2e2f;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    display: inline-block;
+    padding: 7px 16px;
+    margin: 0;
+}
+
+.background-content {
+    height: 750px;
+    background: url('../img/join_us_0.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+
+#hacking-text {
+    font-family: "Cabin";
+    width: 100%;
+    color: white;
+    display: inline-block;
+}
+
+#hacking-text a:link {
+    text-decoration: none;
+}
+
+#emph {
+    font-family: "Cabin";
+    letter-spacing: .05em;
+    color: white;
+    border-bottom: 8px solid #fff;
+}
+
+.width-limit {
+    max-width: 1200px;
+    width: 100%;
+    margin-left: 140px;
+}
+
+.intro-container {
+    background: url("../img/babbage.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    min-width: 100%;
+    text-align: center;
+}
+
+.badge-container {
+    width: 100%;
+    position: absolute;
+    top: 35%;
+    text-align: center;
+}
+
+.intro-welcome {
+    display: inline-block;
+    background: transparent;
+    font-weight: bold;
+    color: white;
+}
+
+.intro-badge {
+    font-weight: bold;
+    display: inline-block;
+    background: url("../img/szdiy_logo.png") no-repeat center center;
+    background-size: 80% 100%;
+    z-index: 1;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+.intro-footer {
+    font-weight: bold;
+    letter-spacing: .15em;
+    height: 80px;
+    display: inline-block;
+    background: transparent;
+    font-size: 30px;
+    color: white;
+    padding-top: -10px;
+}
+
+.description-body {
+    vertical-align: middle;
+    margin-top: 95px;
+}
+
+.description-body p {
+    font-family: "Cabin";
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.0170em;
+    margin: 0 0 0 0;
+    line-height: 1.5em;
+    color: #434243;
+}
+
+.description-content {
+    background: white;
+    z-index: -1;
+    background: white;
+    text-align: center;
+}
+
+.description-content h1 {
+    font-family: "Cabin";
+    text-align: center;
+}
+
+.picture-content {
+    display: none;
+}
+
+.image-box-story li:nth-of-type(1) {
+    background: url('../img/leds.jpg') no-repeat center center;
+    margin-right: 20px;
+}
+
+.image-box-story li:nth-of-type(2) {
+    background: url('../img/3dprint.jpg') no-repeat center center;
+}
+
+.image-box-story li:nth-of-type(3) {
+    background: url('../img/tedx.jpg') no-repeat center center;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.image-box-story li:nth-of-type(4) {
+    background: url('../img/liang_guitar.jpg') no-repeat center center;
+    margin-top: 20px;
+}
+
+.what-we-have {
+    text-align: center;
+}
+
+.what-we-have h1 {
+    font-size: 38px;
+    padding-top: 13px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+.show-wall {
+    min-width: 1000px;
+    width: 100%;
+    //text-align: justify;
+}
+
+.show-wall .rectangle-box {
+    white-space: normal;
+    width: 25%;
+    height: 310px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    z-index: -1;
+}
+
+.show-wall .rectangle-box img {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: -4px;
+    overflow: hidden;
+}
+
+.rectangle-box .hover-info {
+    font-family: 'Cabin';
+    text-align: left;
+    color: white;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    padding: 0px 10%;
+    font-size: 17px;
+    line-height: 25px;
+    margin: 0px; 
+    height: 100%; 
+    width: 100%; 
+    position: absolute; 
+    top: 0px; 
+    left: 0px;
+    opacity: 0;
+    background: rgba(97,126,149,.83);
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.show-wall .rectangle-box .hover-info {
+    font-family: 'Cabin';
+    text-align: left;
+    color: white;
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.show-wall .rectangle-box:hover .hover-info {
+    opacity: 1;
+    filter:alpha(opacity=100);
+}
+
+.show-wall .rectangle-box img:nth-of-type(2) {
+    -webkit-transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.show-wall .rectangle-box:hover img:nth-of-type(2){
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.show-wall .rectangle-box img {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: -4px;
+    overflow: hidden;
+}
+
+.show-wall .rectangle-box img:nth-of-type(2) {
+    position: absolute; 
+    height: auto; 
+    width: 100%; 
+    top: 0; 
+    left: 0;
+}
+
+.show-wall .rectangle-box .hover-info .details-outer {
+    display: table;
+    height: 100%;
+}
+
+.show-wall .rectangle-box .hover-info .details-outer .details-inner {
+    display:table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.show-wall .rectangle-box .hover-info .details-outer .details-inner a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.show-wall .rectangle-box .hover-info .details-outer .details-inner a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.space-content {
+    margin-top: 650px;
+}
+
+.contact-content {
+    width: 100%;
+    background: white;
+    margin: 0 auto 0 auto;
+    //z-index: 99;
+    position: relative;
+    background: white;
+    text-align: center;
+}
+
+.join-us h1 {
+    text-align: center;
+    marin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.join-us-content {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.join-us-content p {
+    font-family: "Cabin";
+    text-align: left;
+    color: #434243;
+}
+
+#sponsors p {
+    font-family: "Cabin";
+    font-size: 30px;
+    //font-weight: bold;
+    text-align: center;
+}
+
+#sponsors h1 {
+    text-align: center;
+    marin-top: 25px;
+    margin-bottom: 50px;
+}
+
+#footer {
+    font: "Cabin";
+}
+    
+.footer-links {
+    margin-right: 25px;
+    display: inline;
+    text-align: center;
+    list-style-type: none;
+}
+
+.footer-links a:link, a:visited {
+    text-decoration: none;
+    color: #34cfbe;
+}
+
+/* The width of the Google Nexus 5 is 1080 pixels and the Nexus 5 has a pixel
+ * ratio of 1:3 so it is 360px because 360 * 3 = 1080.
+ */
+@media handheld,screen and (min-device-width: 360px) and (max-device-width: 660px) {
+    body {
+	width: 100%;
+    }
+
+    nav {
+	 font-size: 8px;   
+	 margin-left: 10px; 
+	 margin-top: 30px;  
+	 width: 85px;      
+	 height: 175px;
+	 letter-spacing: 0.06em;    
+    }
+    
+    nav ul {
+	margin-top: 5px;
+    }
+    
+    h1 {
+	font-size: 18px;
+	font-weight: 900;
+	width: 170px;
+	letter-spacing: 0.040em;
+	border: 8px solid #2f2e2f;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	padding: 7px 16px;
+	margin: 0;
+    }
+
+    .badge-container {
+	width: 100%;
+	height: 40%;
+	position: absolute;
+	top: 35%;
+	text-align: center;
+    }
+
+    .intro-container {
+	height: 100%;
+	min-width: 100%;
+    }
+
+    .intro-badge {        
+	font-size: 18px;       
+	background-size: 100% 100%;
+	width: 60%;            
+	height: 40%;         
+    }                          
+
+    .intro-welcome:after {
+	letter-spacing: .2em;
+	font-size: 15px;
+	content: "Welcome to";
+    }    
+
+    .intro-footer:after {
+	letter-spacing: .2em;
+	height: 80px;
+	font-size: 15px;
+	white-space: pre;
+	content: "Hacker/Maker\A Community";
+    }
+   
+    .description-content {        
+	text-align: center;       
+	width: 300px;
+	height: 1000px;
+	margin-left: 0;
+    }                             
+
+    .description-body {
+	width: 300px;
+	margin-top: 60px;
+	margin-left: -105px;
+    }
+ 
+    .description-body p {
+	text-align: center;
+	font-size: 10px;
+	font-weight: 500;
+    }
+
+    .picture-content {
+	margin-top: 30px;
+	display: block;
+	width: 100%;
+	height: 600px;
+    }
+    
+    .image-box-story li {                        
+        width: 200px;                            
+        height: 180px;                           
+        list-style: none;                        
+        display: block;                   
+        margin: 20 -95;                               
+        padding: 0;                              
+    }                                            
+
+    .image-box-story li:nth-of-type(1),
+    .image-box-story li:nth-of-type(2),
+    .image-box-story li:nth-of-type(3),
+    .image-box-story li:nth-of-type(4) {
+	background-size: cover;
+    }
+
+    .background-content {
+	margin-top: 50px;
+        width: 100%;
+	height: 250px; 
+    }                                     
+
+    #emph {
+	border-bottom: 2px solid #fff;
+    }
+
+    #hacking-text {               
+        font-size: 15px;          
+        font-weight: bold;        
+        margin-top: 90px;         
+        text-align: center;       
+        letter-spacing: .05em;    
+    }                             
+
+    .portfolio-content {
+	width: 100%;
+    }
+
+    .what-we-have {
+	text-align: center;
+	width: 100%;
+    }
+
+    .what-we-have h1 {
+	font-size: 16px;
+	margin-top: 50px;
+	margin-bottom: 55px;
+    }
+    
+    .show-wall {
+	width: 360px;
+	height: 2030px;
+    }
+
+    .show-wall .rectangle-box {
+	height: 320px;
+	width: 340px;
+	float: none;
+	margin: 10px 10px;
+	z-index: 1;
+    }
+
+    .join-us-content {
+	width: 320px;
+	margin-bottom: 80px;
+    }
+                                                  
+    .join-us-content p {                          
+        font-size: 15px;                          
+        font-weight: 500;                         
+        letter-spacing: 0.0120em;                 
+        margin: 0 0 0 0;                          
+        line-height: 1.5em;                       
+    }                                             
+    
+    #sponsors {
+	width: 360px;
+    }
+
+}
+
+@media only screen and (min-width: 660px) and (max-width: 1100px) { 
+    
+    .intro-container {
+	height: 100%;
+    }
+
+    .intro-badge {
+	border: 0;
+    }
+
+    .badge-container {
+	width: 100%;
+	position: absolute;
+	top: 35%;
+	text-align: center;
+    }
+
+    .description-body {
+	margin: 45px auto;
+	max-width: 500px;
+    }
+
+    .description-body p {
+	font-size: 1.060em;
+	font-weight: 500;
+	letter-spacing: 0.020em;
+	margin: 0 0 25px 0;
+    }
+
+    .background-content {                 
+	height: 550px;                    
+	background-size: cover;           
+    }                                     
+
+    #hacking-text {             
+       font-size: 15px;        
+       font-weight: bold;      
+       margin-top: 50px;       
+       text-align: center;     
+       letter-spacing: .05em;  
+   } 
+
+    .join-us-content {                          
+        width: 660px;                           
+        margin-bottom: 100px;                   
+    }                                           
+                                                
+    .join-us-content p {                        
+        font-size: 15px;                        
+        font-weight: 500;                       
+        letter-spacing: 0.0120em;               
+        margin: 0 0 0 0;                        
+        line-height: 1.5em;                     
+    }                                           
+}
+
+@media screen and (min-width: 1100px) { 
+    nav {
+	font-size: 20px;
+	margin-left: 10px;
+	margin-top: 50px;
+	width: 160px;
+	height: 310px;
+	letter-spacing: 0.06em;
+    }
+
+    nav ul {
+	margin-top: 15px;
+    }
+
+    .intro-container {
+	background-attachment: fixed;
+    }
+
+    .width-limit {
+	height: 600px;
+    }
+
+    .intro-badge {
+	font-size: 80px;
+	border: 0; //10px solid;
+	letter-spacing: .5em;
+	padding-top: 20px;
+	width: 36%;
+	height: 150px;
+    }
+
+    .intro-welcome:after {
+	letter-spacing: .2em;
+	height: 80px;
+	font-size: 30px;
+	margin-bottom: -50px;
+	padding-top: -10px;
+	content: "Welcome to";
+    }
+
+    .intro-footer:after {
+	letter-spacing: .1em;
+	height: 80px;
+	font-size: 30px;
+	content: "Hacker/Maker Community";
+    }
+
+    .description-content {
+	white-space : nowrap;
+	padding: 45px 0 45px 0;
+    }
+    
+    .width-limit {             
+	height: 600px;         
+    }                          
+
+    .description-body {
+	white-space: normal;
+	max-width: 450px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 95px;
+    }
+
+    .description-body p {
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 0.024em;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1.6em;
+	margin-bottom: 0;
+	//margin: 0 0 25px 0;
+    }
+
+    h1 {
+	font-size: 40px;
+	font-weight: 900;
+	width: 340px;
+	height: 90px;
+	padding-top: 12px;
+	letter-spacing: 0.040em;
+	border: 8px solid #2f2e2f;
+    }
+
+    .background-content {
+	background-attachment: fixed;
+    }
+
+    .margin-right {
+	margin-right: 0;
+    }
+    
+    .margin-left {
+	margin-left: 0;
+    }
+
+    .picture-content {
+	white-space: normal;
+	width: 600px;
+	display: inline-block;
+	padding: 0;
+	vertical-align: middle;
+    }
+
+    .image-box-story li {
+	width: 234px;
+	height: 234px;
+	list-style: none;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+    }
+
+    .image-box-story li:nth-of-type(1),
+    .image-box-story li:nth-of-type(2),
+    .image-box-story li:nth-of-type(3),
+    .image-box-story li:nth-of-type(4) {
+	background-size: cover;
+    } 
+
+    .background-content {                 
+	height: 750px;                    
+	background-size: cover;           
+    }                                     
+
+    .what-we-have h1 {
+	width: 360px;
+	margin-top: 100px;
+	margin-bottom: 100px;
+    }
+
+    #hacking-text {
+	display: inline-block;
+	font-size: 5em;
+	font-weight: bold;
+	margin-top: 240px;
+	text-align: center;
+	letter-spacing: .05em;
+    }
+
+    .join-us-content {
+	width: 900px;
+	margin-bottom: 100px;
+    }
+
+    .join-us-content p {
+	font-size: 20px;
+	font-weight: 500;
+	letter-spacing: 0.0170em;
+	margin: 0 0 0 0;
+	line-height: 1.5em;
+    }
+}
+
+/* For Retina */
+/*@media only screen and (orientation: landscape) and
+  //(-webkit-min-device-pixel-ratio: 2), (device-width: 320px), (device-width: 768px)
+  */
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) 
+{ 
+
+    .intro-container {
+	-webkit-background-size: 150% auto;
+	background-attachment: scroll;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+    }
+
+    .intro-badge {
+	border: 0;
+	padding-top: 0;
+	width: 36%;
+	height: 100%;
+    }
+    
+    .intro-welcome:after {
+	letter-spacing: .2em;
+	font-size: 30px;
+	//margin-bottom: -80px;
+	content: "Welcome to";
+    }
+
+    .intro-footer:after {
+	letter-spacing: .1em;
+	height: 80px;
+	font-size: 23px;
+	content: "Hacker/Maker Community";
+    }
+    
+    .description-content {
+	text-align: center;
+	padding: 45px 0 45px 0;
+    }
+    
+    .description-body {
+	//white-space: normal;
+text-align: center;
+max-width: 450px;
+display: inline-block;
+vertical-align: middle;
+margin-top: 95px;
+margin-right: 288px;
+    }
+
+    .picture-content {
+	margin-right: 320px;
+	text-align: center;
+        width: 700px;
+        display: inline-block;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    .image-box-story li {
+        width: 234px;
+        height: 234px;
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .image-box-story li:nth-of-type(1),      
+    .image-box-story li:nth-of-type(2),      
+    .image-box-story li:nth-of-type(3),      
+    .image-box-story li:nth-of-type(4) {     
+	background-size: cover;              
+    }                                        
+
+    .background-content {
+	height: 750px;
+	background-size: cover;
+    }
+
+    #hacking-text {             
+	font-size: 15px;        
+	font-weight: bold;      
+	margin-top: 50px;       
+	text-align: center;     
+	letter-spacing: .05em;  
+    }
+
+    .join-us-content {
+	width: 900px;
+	margin-bottom: 100px;
+    }
+
+    .join-us-content p {               
+        font-size: 20px;               
+        font-weight: 500;              
+        letter-spacing: 0.0170em;      
+        margin: 0 0 0 0;               
+        line-height: 1.5em;            
+    }                                  
+
+}
