@@ -428,6 +428,11 @@ h1 {
     color: #434243;
 }
 
+.join-us-content ul li {
+    list-style: none;
+    text-align: left;
+}
+
 #sponsors p {
     font-family: "Cabin";
     font-size: 30px;
