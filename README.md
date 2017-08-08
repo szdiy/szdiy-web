@@ -1,5 +1,5 @@
 # SZDIY New Web Site
 
-[Projects](/projects)
+[Projects](projects)
 
 
