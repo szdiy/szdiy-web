@@ -34,3 +34,7 @@
  ```bash
  $ bundle exec jekyll serve
  ```
+
+ ## 当前配置模板
+
+ [Architect](https://github.com/pages-themes/architect)，可参考它的README.md来进行配置
