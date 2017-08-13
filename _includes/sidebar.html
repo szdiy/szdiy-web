@@ -1,0 +1,13 @@
+
+<aside id="sidebar">
+
+{% if site.sidebar %}
+
+<a href="{{ site.sidebar.link | relative_url }}">{{ site.sidebar.title }}</a>
+
+
+  {% include tree.html items=site.sidebar.items %}
+
+{% endif %}
+
+</aside>

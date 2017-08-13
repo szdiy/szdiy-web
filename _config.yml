@@ -3,3 +3,21 @@ theme: jekyll-theme-architect
 
 title: 深圳DIY社区
 description: Welcome to SZDIY/Maker Community
+
+
+sidebar:
+  title: Intro
+  link: /
+  items:
+
+    - title: Meetup
+      link: /meetup
+
+    - title: 会员制度
+      link: /members
+
+    - title: 项目
+      link: /projects
+
+    - title: 社区文化
+      link: /culture
