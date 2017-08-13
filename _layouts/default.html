@@ -16,17 +16,14 @@
 
   <body>
 
-    {% include header.html %}
-
     <div id="content-wrapper">
-      <div class="inner clearfix">
 
         {% include sidebar.html %}
 
         <section id="main-content">
           {{ content }}
         </section>
-      </div>
+        
     </div>
 
     {% if site.google_analytics %}

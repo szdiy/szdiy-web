@@ -1,13 +1,27 @@
 
 <aside id="sidebar">
 
-{% if site.sidebar %}
-
-<a href="{{ site.sidebar.link | relative_url }}">{{ site.sidebar.title }}</a>
+{% include header.html %}
 
 
-  {% include tree.html items=site.sidebar.items %}
+  {% if site.sidebar %}
+  <!-- Navigation Tree -->
+  <div class="nav">
 
-{% endif %}
+    {% include tree.html items=site.sidebar.items %}
+
+  </div>
+
+  {% endif %}
+
+<footer>
+
+  <div><a href="{{ site.links.github }}">Github</a></div>
+  <div><a href="{{ site.links.flickr }}">Flickr</a></div>
+  <div>IRC: {{ site.links.irc }}</div>
+  <div>Wechat: {{ site.links.wechat }}</div>
+  <div>Admin: szdiyadm[#]gmail.com</div>
+
+</footer>
 
 </aside>

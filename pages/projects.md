@@ -1,8 +1,15 @@
 ---
 layout: page
-permalink: project
+permalink: projects
 ---
 
-# SZDIY Project List
+# Projects 项目
 
-[POLASCII](https://polascii.szdiy.org)
+
+ * [Artanis](#): A fast monolithic web-framework of Scheme
+ * [eliug](#)
+ * [Edmund(IRCBot)](#)
+ * [FacePhone](#)
+ * [POLASCII](https://polascii.szdiy.org)
+ * [szdiyCam](#)
+ * [Orange Maze](#)

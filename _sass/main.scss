@@ -1,12 +1,12 @@
-
-/* LAYOUT STYLES */
+/* COMMON STYLES */
 body {
   font-family: $font-family;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
+  height: 100%;
+  width: 100%;
   color: $base-font-color;
-  background: #fafafa url(../images/body-bg.jpg) 0 0 repeat;
 }
 
 p {
@@ -15,53 +15,10 @@ p {
 
 a {
   color: $link-color;
-
   &:hover {
     color: $link-hover-color;
   }
 }
-
-header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-family: $font-family;
-  background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
-  border-bottom: solid 1px #275da1;
-}
-
-header h1 {
-  width: 540px;
-  margin-top: 0;
-  margin-bottom: 0.2em;
-  font-size: 72px;
-  font-weight: normal;
-  line-height: 1;
-  color: #fff;
-  letter-spacing: -1px;
-}
-
-header h2 {
-  width: 540px;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 26px;
-  font-weight: normal;
-  line-height: 1.3;
-  color: #9ddcff;
-  letter-spacing: 0;
-}
-
-.inner {
-  position: relative;
-  width: 940px;
-  margin: 0 auto;
-}
-
-#content-wrapper {
-  padding-top: 30px;
-  border-top: solid 1px #fff;
-}
-
 
 a.button {
   width: 134px;
@@ -72,16 +29,11 @@ a.button {
   font-size: 23px;
   line-height: 1.2;
   color: #fff;
-}
-a.button small {
-  display: block;
-  font-size: 11px;
-}
-header a.button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: transparent url(../images/github-button.png) 0 0 no-repeat;
+
+  small {
+    display: block;
+    font-size: 11px;
+  }
 }
 
 code, pre {
@@ -114,9 +66,6 @@ pre code {
 ul, ol, dl {
   margin-bottom: 20px;
 }
-
-
-/* COMMON STYLES */
 hr {
   height: 0;
   margin-top: 1em;
@@ -146,25 +95,112 @@ form {
 
 }
 
+/* LAYOUT STYLES */
+#content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+}
 
-/* GENERAL ELEMENT TYPE STYLES */
-aside#sidebar {
-  float: left;
-  width: $sidebar-width;
-  min-height: 504px;
-  padding-right: $sidebar-right-padding;
-  line-height: 1.3;
-  // background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
 
-  p.repo-owner,
-  p.repo-owner a {
-    font-weight: bold;
+/* 左栏 */
+// logo头部
+header {
+  margin: 20px 10px;
+  font-family: $font-family;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #fff;
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.3;
+    letter-spacing: 0;
   }
 }
 
+header a.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent url(../images/github-button.png) 0 0 no-repeat;
+}
+
+aside#sidebar {
+  position: relative;
+  flex: 0 0 auto;
+  width: $sidebar-width;
+  line-height: 1.3;
+  color: $sidebar-color;
+  background-color: $sidebar-bg-color;
+
+  a {
+    color: $sidebar-color;
+    &:hover {
+      color: $sidebar-color;
+    }
+  }
+
+  .logo {
+    display: block;
+    width: 200px;
+    height: 200px;
+  }
+
+  .nav {
+    padding: 0 20px;
+  }
+
+  footer {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 13px;
+    color: #aaa;
+
+    a {
+      color: #aaa;
+      &:hover {
+        color: #eee;
+      }
+    }
+  }
+
+}
+
+
+
+
+/* GENERAL ELEMENT TYPE STYLES */
 #main-content {
-  float: left;
-  width: 690px;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 20px;
+  overflow: auto;
 
   img {
     max-width: 100%;
@@ -182,13 +218,6 @@ aside#sidebar {
     font-weight: normal;
     text-indent: 6px;
     letter-spacing: -1px;
-
-    :before {
-      padding-right: 0.3em;
-      margin-left: -0.9em;
-      color: #9ddcff;
-      content: "/";
-    }
   }
 
   h2 {
@@ -196,13 +225,6 @@ aside#sidebar {
     font-size: 22px;
     font-weight: bold;
     text-indent: 4px;
-
-    &:before {
-      padding-right: 0.3em;
-      margin-left: -1.5em;
-      content: "//";
-      color: #9ddcff;
-    }
   }
 
   h3 {
@@ -211,13 +233,6 @@ aside#sidebar {
     font-size: 18px;
     font-weight: bold;
     text-indent: 3px;
-
-    :before {
-      padding-right: 0.3em;
-      margin-left: -2em;
-      content: "///";
-      color: #9ddcff;
-    }
   }
 
   h4 {
@@ -226,13 +241,6 @@ aside#sidebar {
     font-weight: bold;
     color: #474747;
     text-indent: 3px;
-
-    &::before {
-      padding-right: 0.3em;
-      margin-left: -2.8em;
-      content: "////";
-      color: #9ddcff;
-    }
   }
 
   h5 {
@@ -240,13 +248,6 @@ aside#sidebar {
     font-size: 14px;
     color: #474747;
     text-indent: 3px;
-
-    &::before {
-      padding-right: 0.3em;
-      margin-left: -3.2em;
-      content: "/////";
-      color: #9ddcff;
-    }
   }
 
   h6 {
@@ -254,13 +255,6 @@ aside#sidebar {
     font-size: .8em;
     color: #474747;
     text-indent: 3px;
-
-    &::before {
-      padding-right: 0.3em;
-      margin-left: -3.7em;
-      content: "//////";
-      color: #9ddcff;
-    }
   }
 }
 
@@ -301,31 +295,16 @@ dl dd {
   font-weight: 100;
 }
 
-footer {
-  padding-top: 20px;
-  padding-bottom: 30px;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #aaa;
-  background: transparent url('../images/hr.png') 0 0 no-repeat;
-}
-
-footer a {
-  color: #666;
-}
-footer a:hover {
-  color: #444;
-}
 
 /* MISC */
-.clearfix:after {
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-  content: '.';
-}
-
-.clearfix {display: inline-block;}
-* html .clearfix {height: 1%;}
-.clearfix {display: block;}
+// .clearfix:after {
+//   display: block;
+//   height: 0;
+//   clear: both;
+//   visibility: hidden;
+//   content: '.';
+// }
+//
+// .clearfix {display: inline-block;}
+// * html .clearfix {height: 1%;}
+// .clearfix {display: block;}
