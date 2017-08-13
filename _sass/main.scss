@@ -171,6 +171,13 @@ aside#sidebar {
 
   .nav {
     padding: 0 20px;
+
+    a {
+      border-bottom: 1px solid transparent;
+      &:hover, &:active {
+        border-bottom: 1px solid #fff;
+      }
+    }
   }
 
   footer {
@@ -191,9 +198,6 @@ aside#sidebar {
   }
 
 }
-
-
-
 
 /* GENERAL ELEMENT TYPE STYLES */
 #main-content {
