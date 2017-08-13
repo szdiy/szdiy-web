@@ -56,6 +56,7 @@
 
   .tree, .tree ul, .tree li {
     display: inline-block;
+    margin-right: 10px;
   }
 
   .tree {
@@ -75,4 +76,5 @@
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) { }
+@media only screen and (max-width: 479px) {
+}
