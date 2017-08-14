@@ -110,6 +110,36 @@
     display: inline;
     margin-right: 10px;
   }
+}
 
 
+@media only screen and (max-width: 320px) {
+  aside#sidebar {
+    .logo {
+      width: 48px;
+      height: 48px;
+      float: left;
+    }
+
+    header {
+      h1, h2 {
+        margin-left: 58px;
+      }
+    }
+
+    .nav {
+      padding: 0 5px;
+      font-size: 11px;
+    }
+
+    footer {
+      font-size: 11px;
+      padding: 10px;
+    }
+  }
+
+  .site-link {
+    display: inline;
+    margin-right: 10px;
+  }
 }
